@@ -31,7 +31,7 @@ public interface DriverAPI {
     @Operation(description = "Deletes a driver by id")
     void deleteDriver(@Parameter(description=  "Driver's id to be removed") Long id);
 
-    Driver updateDriver(@Parameter(description= "Driver's it ot be updated") Long id, @RequestBody Driver driver);
+    Driver updateDriver(@Parameter(description= "Driver's it to be updated") Long id, @RequestBody Driver driver);
 
     @Operation(description = "List all drivers")
     List<Driver> listDrivers() ;
