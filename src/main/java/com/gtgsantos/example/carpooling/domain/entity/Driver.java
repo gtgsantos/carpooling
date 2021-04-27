@@ -24,5 +24,5 @@ public class Driver {
     String name;
 
     @Schema(description = "Driver's  Birthday")
-    Date birthDate;
+    Date birthDay;
 }
