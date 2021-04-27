@@ -12,7 +12,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RestController
