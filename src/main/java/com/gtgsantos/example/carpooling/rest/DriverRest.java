@@ -1,8 +1,8 @@
-package com.gtgsantos.example.carpooling.interfaces;
+package com.gtgsantos.example.carpooling.rest;
 
 import com.gtgsantos.example.carpooling.domain.entity.Driver;
 import com.gtgsantos.example.carpooling.domain.repository.DriverRepository;
-import io.swagger.v3.oas.annotations.Operation;
+import com.gtgsantos.example.carpooling.rest.interfaces.DriverAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,10 +13,9 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-@RestController()
+@RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-public class DriverAPIImplementation implements DriverAPI {
+public class DriverRest implements DriverAPI {
 
     @Autowired
     private DriverRepository repository;

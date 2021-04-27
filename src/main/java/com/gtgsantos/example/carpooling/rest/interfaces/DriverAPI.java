@@ -1,4 +1,4 @@
-package com.gtgsantos.example.carpooling.interfaces;
+package com.gtgsantos.example.carpooling.rest.interfaces;
 
 import com.gtgsantos.example.carpooling.domain.entity.Driver;
 import com.gtgsantos.example.carpooling.error.Errors;
