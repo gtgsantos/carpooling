@@ -33,6 +33,3 @@ public class TravelRequest {
     Date creationDate;
 }
 
-
-
-}
