@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
-@Tag(name="Passenger Api", description = "Handle passenger's data")
+@Tag(name="Passenger", description = "Handle passenger's data")
 public interface PassengerAPI {
 
     @Operation(description = "List all Passengers")

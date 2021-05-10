@@ -6,14 +6,12 @@ import com.gtgsantos.example.carpooling.rest.interfaces.PassengerAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@Service
 @RestController
 @RequestMapping(path="/passengers", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PassengerRest implements PassengerAPI {
@@ -21,7 +19,7 @@ public class PassengerRest implements PassengerAPI {
     @Autowired
     PassengerRepository passengerRepository;
 
-    @GetMapping()
+    @GetMapping
     public List<Passenger> listPassengers() {
         return passengerRepository.findAll();
     }
@@ -32,7 +30,7 @@ public class PassengerRest implements PassengerAPI {
     }
 
     @PostMapping
-    @RolesAllowed("ROLE_ADMIN")
+//    @RolesAllowed("ROLE_ADMIN")
     public Passenger createPassenger(@RequestBody Passenger passenger) {
         return passengerRepository.save(passenger);
     }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Tag(name="Driver Api", description = "Handle driver's data")
+@Tag(name="Driver", description = "Handle driver's data")
 public interface DriverAPI {
 
     @Operation(

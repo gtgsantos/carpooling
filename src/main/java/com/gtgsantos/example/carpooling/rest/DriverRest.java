@@ -13,30 +13,30 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path="/drivers", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DriverRest implements DriverAPI {
 
     @Autowired
     private DriverRepository repository;
 
-    @GetMapping("/drivers/{id}")
+    @GetMapping("/{id}")
     public Driver findDriver(@PathVariable("id") Long id) {
         Optional<Driver> optionalDriver = repository.findById(id);
         return optionalDriver.orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/drivers")
+    @PostMapping
     public Driver createDriver(@RequestBody Driver driver) {
         return repository.save(driver);
     }
 
-    @DeleteMapping("/drivers/{id}")
+    @DeleteMapping("/{id}")
     public void deleteDriver(@PathVariable("id") Long id) {
         repository.delete(findDriver(id));
     }
 
-    @PutMapping("/drivers/{id}")
+    @PutMapping("/{id}")
     public Driver updateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
         Driver toUpdateDriver = findDriver(id);
         toUpdateDriver.setName(driver.getName());
@@ -45,7 +45,7 @@ public class DriverRest implements DriverAPI {
         return repository.save(toUpdateDriver);
     }
 
-    @GetMapping("/drivers")
+    @GetMapping
     public List<Driver> listDrivers() {
         return repository.findAll();
     }
