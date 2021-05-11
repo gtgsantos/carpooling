@@ -31,5 +31,13 @@ public class TravelRequest {
 
     @Schema(description = "Creation Date")
     Date creationDate;
+
+    public TravelRequest(Passenger passenger, String origin, String destination, TravelRequestStatus status) {
+        this.passenger = passenger;
+        this.origin = origin;
+        this.destination = destination;
+        this.status = status;
+    }
+
 }
 
