@@ -7,6 +7,7 @@ import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTran
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +39,8 @@ public class TravelRequestService {
     }
 
     public TravelRequest save(TravelRequest travelRequest) {
+        travelRequest.setStatus(TravelRequestStatus.CREATED);
+        travelRequest.setCreationDate(new Date());
         return travelRequestRepository.save(travelRequest);
     }
 

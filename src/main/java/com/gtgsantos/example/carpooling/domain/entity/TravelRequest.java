@@ -2,6 +2,7 @@ package com.gtgsantos.example.carpooling.domain.entity;
 
 import com.gtgsantos.example.carpooling.domain.enums.TravelRequestStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Data
 @Entity
+@Builder
 @Schema(description = "Represents a travel request")
 public class TravelRequest {
 
@@ -31,13 +33,6 @@ public class TravelRequest {
 
     @Schema(description = "Creation Date")
     Date creationDate;
-
-    public TravelRequest(Passenger passenger, String origin, String destination, TravelRequestStatus status) {
-        this.passenger = passenger;
-        this.origin = origin;
-        this.destination = destination;
-        this.status = status;
-    }
 
 }
 

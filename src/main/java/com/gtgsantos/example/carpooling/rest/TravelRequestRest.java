@@ -1,12 +1,14 @@
 package com.gtgsantos.example.carpooling.rest;
 
 import com.gtgsantos.example.carpooling.domain.entity.TravelRequest;
+
 import com.gtgsantos.example.carpooling.domain.mapping.TravelRequestMapper;
 import com.gtgsantos.example.carpooling.domain.service.TravelRequestService;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectInput;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectOutput;
 import com.gtgsantos.example.carpooling.rest.interfaces.TravelRequestAPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +33,10 @@ public class TravelRequestRest implements TravelRequestAPI {
     }
 
     @PostMapping
-    public TravelRequestTransferObjectOutput makeTravelRequest(@RequestBody @Valid TravelRequestTransferObjectInput travelRequestTransferObjectInput) {
-        TravelRequest newTravelRequest = travelRequestService.save(mapper.mapTo(travelRequestTransferObjectInput));
-        TravelRequestTransferObjectOutput output = mapper.mapTo(newTravelRequest);
-        return output;
+    public EntityModel<TravelRequestTransferObjectOutput> makeTravelRequest(@RequestBody @Valid TravelRequestTransferObjectInput travelRequestTransferObjectInput) {
+        TravelRequest travelRequest = travelRequestService.save(mapper.mapTo(travelRequestTransferObjectInput));
+        EntityModel<TravelRequestTransferObjectOutput> retorno = mapper.buildOutputModel(travelRequest);
+        return retorno;
     }
 
 }

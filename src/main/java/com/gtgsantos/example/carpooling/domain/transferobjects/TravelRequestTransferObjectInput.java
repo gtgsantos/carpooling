@@ -8,7 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class TravelRequestTransferObjectInput {
 
-    private Long passengerID;
+    private Long passengerId;
     private String origin;
     private String destination;
     private TravelRequestStatus status;

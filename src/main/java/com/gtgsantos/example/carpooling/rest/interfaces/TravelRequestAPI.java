@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.hateoas.EntityModel;
 
 import java.util.List;
 
@@ -34,5 +35,5 @@ public interface TravelRequestAPI {
                             content = @Content(schema = @Schema(implementation = Errors.class))
                     )
             })
-    TravelRequestTransferObjectOutput makeTravelRequest(@Parameter(description = "New Travel request") TravelRequestTransferObjectInput travelRequestTransferObjectInput);
+    EntityModel<TravelRequestTransferObjectOutput> makeTravelRequest(@Parameter(description = "New Travel request") TravelRequestTransferObjectInput travelRequestTransferObjectInput);
 }
