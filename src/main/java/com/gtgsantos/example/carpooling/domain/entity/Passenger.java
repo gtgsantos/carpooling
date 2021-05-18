@@ -14,7 +14,7 @@ public class Passenger {
 
     @Id
     @GeneratedValue
-    Long id;
+    Long passengerId;
 
     @Schema(description = "Passenger's name")
     @Size(min=2, max=255)

@@ -1,7 +1,6 @@
 package com.gtgsantos.example.carpooling.rest;
 
 import com.gtgsantos.example.carpooling.domain.entity.TravelRequest;
-
 import com.gtgsantos.example.carpooling.domain.mapping.TravelRequestMapper;
 import com.gtgsantos.example.carpooling.domain.service.TravelRequestService;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectInput;
@@ -27,9 +26,9 @@ public class TravelRequestRest implements TravelRequestAPI {
 
 
     @GetMapping("/nearby")
-    public List<TravelRequestTransferObjectOutput> findTravelRequest(@RequestParam String currentAddress) {
-        List<TravelRequest> listaNearbyTravels = travelRequestService.listNearbyTravelRequests(currentAddress);
-        return mapper.mapTo(listaNearbyTravels);
+    public List<EntityModel<TravelRequestTransferObjectOutput>> findTravelRequest(@RequestParam String currentAddress) {
+
+        return mapper.mapTo(travelRequestService.listNearbyTravelRequests(currentAddress));
     }
 
     @PostMapping

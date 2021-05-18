@@ -17,7 +17,7 @@ public class Driver {
 
     @Id
     @GeneratedValue
-    Long id;
+    Long driverId;
 
     @Schema(description = "Driver's name")
     @Size(min=2, max=255)

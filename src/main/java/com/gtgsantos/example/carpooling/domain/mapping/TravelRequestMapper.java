@@ -2,7 +2,6 @@ package com.gtgsantos.example.carpooling.domain.mapping;
 
 import com.gtgsantos.example.carpooling.domain.entity.Passenger;
 import com.gtgsantos.example.carpooling.domain.entity.TravelRequest;
-import com.gtgsantos.example.carpooling.domain.enums.TravelRequestStatus;
 import com.gtgsantos.example.carpooling.domain.repository.PassengerRepository;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectInput;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectOutput;
@@ -15,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +24,7 @@ public class TravelRequestMapper {
     PassengerRepository passengerRepository;
 
     public  TravelRequestTransferObjectOutput mapTo(TravelRequest travelRequest) {
-        return new TravelRequestTransferObjectOutput(travelRequest.getId(), travelRequest.getOrigin(),
+        return new TravelRequestTransferObjectOutput(travelRequest.getTravelId(), travelRequest.getOrigin(),
                 travelRequest.getDestination(), travelRequest.getStatus(), travelRequest.getCreationDate());
     }
 
@@ -36,7 +34,7 @@ public class TravelRequestMapper {
 
         Link passengerLink = WebMvcLinkBuilder
                 .linkTo(PassengerRest.class)
-                .slash(travelRequest.getPassenger().getId())
+                .slash(travelRequest.getPassenger().getPassengerId())
                 .withRel("passenger")
                 .withTitle(travelRequest.getPassenger().getName());
         model.add(passengerLink);
@@ -45,10 +43,10 @@ public class TravelRequestMapper {
     }
 
 
-    public List<TravelRequestTransferObjectOutput> mapTo(List<TravelRequest> listaNearbyTravels) {
+    public List<EntityModel<TravelRequestTransferObjectOutput>> mapTo(List<TravelRequest> listaNearbyTravels) {
         return listaNearbyTravels
                 .stream()
-                .map(this::mapTo)
+                .map(this::buildOutputModel)
                 .collect(Collectors.toList());
 
     }

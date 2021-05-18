@@ -2,8 +2,10 @@ package com.gtgsantos.example.carpooling.domain.entity;
 
 import com.gtgsantos.example.carpooling.domain.enums.TravelRequestStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,11 +14,13 @@ import java.util.Date;
 @Entity
 @Builder
 @Schema(description = "Represents a travel request")
+@NoArgsConstructor
+@AllArgsConstructor
 public class TravelRequest {
 
     @Id
     @GeneratedValue
-    Long id;
+    Long travelId;
 
     @ManyToOne
     @Schema(description = "Travel passenger")

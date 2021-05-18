@@ -26,7 +26,7 @@ public interface TravelRequestAPI {
                             content = @Content(schema = @Schema(implementation = Errors.class))
                     )
             })
-    List<TravelRequestTransferObjectOutput> findTravelRequest(@Parameter(description = "Current Driver's Address to find nearby Travels") String currentAddress);
+    List<EntityModel<TravelRequestTransferObjectOutput>> findTravelRequest(@Parameter(description = "Current Driver's Address to find nearby Travels") String currentAddress);
 
     @Operation(
             description = "Create a travel request",
