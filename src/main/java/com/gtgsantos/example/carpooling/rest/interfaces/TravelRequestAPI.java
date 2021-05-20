@@ -3,7 +3,7 @@ package com.gtgsantos.example.carpooling.rest.interfaces;
 
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectInput;
 import com.gtgsantos.example.carpooling.domain.transferobjects.TravelRequestTransferObjectOutput;
-import com.gtgsantos.example.carpooling.error.Errors;
+import com.gtgsantos.example.carpooling.rest.error.Errors;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

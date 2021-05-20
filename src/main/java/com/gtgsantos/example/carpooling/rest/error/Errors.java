@@ -1,4 +1,4 @@
-package com.gtgsantos.example.carpooling.error;
+package com.gtgsantos.example.carpooling.rest.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
