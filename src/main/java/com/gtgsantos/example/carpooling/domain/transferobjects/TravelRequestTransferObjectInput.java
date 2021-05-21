@@ -1,6 +1,5 @@
 package com.gtgsantos.example.carpooling.domain.transferobjects;
 
-import com.gtgsantos.example.carpooling.domain.enums.TravelRequestStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -11,14 +10,12 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class TravelRequestTransferObjectInput {
 
-    @NotNull(message = "O campo passengerId não pode ser nulo.")
-    private Long passengerId;
+    @NotNull(message = "O campo passengerId não pode ser nulo")
+    Long passengerId;
 
-    @NotEmpty(message = "O campo origin não pode estar em branco.")
-    private String origin;
+    @NotEmpty(message = "O campo origin não pode estar em branco")
+    String origin;
 
-    @NotEmpty(message = "O campo destination não pode estar em branco.")
-    private String destination;
-
-    private TravelRequestStatus status;
+    @NotEmpty(message = "O campo destination não pode estar em branco")
+    String destination;
 }

@@ -22,13 +22,6 @@ public class TravelRequestService {
 
     private static final int MAX_TRAVEL_TIME = 600;
 
-//    public TravelRequest saveTravelRequest(TravelRequest travelRequest) {
-//        travelRequest.setStatus(TravelRequestStatus.CREATED);
-//        travelRequest.setCreationDate(new Date());
-//        return travelRequestRepository.save(travelRequest);
-//    }
-//
-//
     public List<TravelRequest> listNearbyTravelRequests(String currentAddress) {
         List<TravelRequest> requests = travelRequestRepository.findByStatus(TravelRequestStatus.CREATED);
         return requests
@@ -42,17 +35,5 @@ public class TravelRequestService {
         travelRequest.setCreationDate(new Date());
         return travelRequestRepository.save(travelRequest);
     }
-
-//////
-//    public TravelRequestTransferObjectOutput make(TravelRequestTransferObjectOutput travelRequestTransferObjectOutput) {
-////        repository.save(travelRequestTR);
-//    }
-//
-//    public TravelRequest find(Long id) {
-//        Optional<TravelRequest> optional = repository.findById(id);
-//        return optional.orElseThrow(
-//                () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//    }
-
 
 }
