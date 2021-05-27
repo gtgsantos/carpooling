@@ -30,7 +30,7 @@ public class TravelRequestMapper {
 
     public EntityModel<TravelRequestTransferObjectOutput> buildOutputModel(TravelRequest  travelRequest) {
 
-        EntityModel<TravelRequestTransferObjectOutput> model = EntityModel.of(mapTo(travelRequest));
+        EntityModel<TravelRequestTransferObjectOutput> model = new EntityModel(mapTo(travelRequest));
 
         Link passengerLink = WebMvcLinkBuilder
                 .linkTo(PassengerRest.class)

@@ -8,9 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
 
 @Tag(name="Driver", description = "Handle driver's data")
 public interface DriverAPI {
@@ -34,5 +33,5 @@ public interface DriverAPI {
     Driver updateDriver(@Parameter(description= "Driver's it to be updated") Long id, @RequestBody Driver driver);
 
     @Operation(description = "List all drivers")
-    List<Driver> listDrivers() ;
+    CollectionModel<Driver> listDrivers(@Parameter(description = "Page number") int page) ;
 }
