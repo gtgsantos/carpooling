@@ -1,18 +1,21 @@
 package com.gtgsantos.example.carpooling.rest;
 
 import com.gtgsantos.example.carpooling.domain.entity.Driver;
+import com.gtgsantos.example.carpooling.domain.entity.dto.Drivers;
 import com.gtgsantos.example.carpooling.domain.repository.DriverRepository;
 import com.gtgsantos.example.carpooling.rest.interfaces.DriverAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -53,16 +56,18 @@ public class DriverRest implements DriverAPI {
         return repository.save(toUpdateDriver);
     }
 
-    @GetMapping
-    public CollectionModel<Driver> listDrivers(@RequestParam(value = "page", defaultValue = "0") int page) {
-        Page<Driver> driverPage = repository.findAll(PageRequest.of(page, PAGE_SIZE));
-        CollectionModel<Driver> collectionModel = new CollectionModel(driverPage.getContent());
+        @GetMapping
+        public Drivers listDrivers(@RequestParam(value = "page", defaultValue = "0") int page) {
+            Page<Driver> driverPage = repository.findAll(PageRequest.of(page, PAGE_SIZE));
 
-        Link lastPageLink = linkTo(methodOn(DriverRest.class).listDrivers(driverPage.getTotalPages() - 1))
-                            .withRel("lastPage");
+            List<EntityModel<Driver>> driverList = new ArrayList<>();
+            driverPage.getContent().forEach(driver -> driverList.add(new EntityModel<>(driver)));
 
-        return collectionModel.add(lastPageLink);
-    }
+            Link lastPageLink = linkTo(methodOn(DriverRest.class).listDrivers(driverPage.getTotalPages() - 1))
+                        .withRel("lastPage");
+
+            return new Drivers(driverList, lastPageLink);
+        }
 
 
 
